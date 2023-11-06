@@ -14,7 +14,7 @@ class SiteLayut extends StatelessWidget {
       key: scaffoldKey,
       appBar: topNavigationBar(context, scaffoldKey),
       drawer: const Drawer(), // TODO: consider to implement a drawer or not
-      body: ResponsiveWidget(largeScreen: LargeScreen(),
+      body: const ResponsiveWidget(largeScreen: LargeScreen(),
       ),
     );
   }

@@ -1,3 +1,5 @@
+import 'package:bidsystem/pages/home/widgets/board.dart';
+import 'package:bidsystem/widgets/list/list_auction.dart';
 import 'package:flutter/material.dart';
 
 class LargeScreen extends StatelessWidget {
@@ -5,10 +7,11 @@ class LargeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      Expanded(
-          child: Container(color: Colors.red,)), // Side menu if needed
-      Expanded(flex: 5, child: Container(color: Colors.blue,)) // Main content
-    ]);
+    return ListView(
+      children: [
+        HomeBoard(),
+        GridListAuction(),
+      ],
+    );
   }
 }
