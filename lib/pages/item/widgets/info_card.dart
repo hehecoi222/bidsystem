@@ -1,3 +1,4 @@
+import 'package:bidsystem/pages/item/widgets/dialog.dart';
 import 'package:bidsystem/widgets/cutom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class InfoItem extends StatelessWidget {
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             children: [
@@ -31,12 +33,34 @@ class InfoItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
           ),
           CustomText(
-            text: "This is a description",
+            text: "Sell by: \$seller",
             color: Theme.of(context).colorScheme.onSurfaceVariant,
           ),
-          Expanded(child: Container()),
-          CustomText(
-            text: "hi",
+          SizedBox(height: 200,),
+          Row(
+            children: [
+              Expanded(child: Container()),
+              CustomText(
+                  text: "End date: \$endDate",
+                  size: 12,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant),
+            ],
+          ),
+          Row(children: [
+            Expanded(child: LinearProgressIndicator(value: 0.5,)),
+            SizedBox(width: 10,),
+            CustomText(text: "Remaining time: \$remainingTime",)
+          ],),
+          Row(
+            children: [
+              FloatingActionButton.extended(onPressed: () => showDialog(context: context, builder: CustomDialog().build), label: Row(
+                children: [
+                  Icon(Icons.monetization_on_outlined, color: Theme.of(context).colorScheme.onPrimaryContainer,),
+                  SizedBox(width: 12,),
+                  CustomText(text: "Place bid", size: 14, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onPrimaryContainer,)
+                ],
+              ))
+            ],
           )
         ],
       ),

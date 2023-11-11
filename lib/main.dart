@@ -2,9 +2,11 @@ import 'package:bidsystem/constants/color_scheme.dart';
 import 'package:bidsystem/controllers/dark_theme_controller.dart';
 import 'package:bidsystem/layout.dart';
 import 'package:flutter/material.dart';
+import 'package:bidsystem/controllers/navigation_controller.dart' as navigation_controller;
 import 'package:get/get.dart';
 
 void main() {
+  Get.put(navigation_controller.NavigationController());
   runApp(MyApp());
 }
 

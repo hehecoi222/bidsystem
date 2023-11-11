@@ -29,48 +29,6 @@ class ItemImageCarousel extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ).toList(),
-      // [
-      //   Image.network("https://picsum.photos/200/305", loadingBuilder:
-      //       (BuildContext context, Widget child,
-      //           ImageChunkEvent? loadingProgress) {
-      //     if (loadingProgress == null) return child;
-      //     return Center(
-      //       child: CircularProgressIndicator(
-      //         value: loadingProgress.expectedTotalBytes != null
-      //             ? loadingProgress.cumulativeBytesLoaded /
-      //                 loadingProgress.expectedTotalBytes!
-      //             : null,
-      //       ),
-      //     );
-      //   }, width: double.infinity, height: double.infinity, fit: BoxFit.cover,),
-      //   Image.network("https://picsum.photos/200/306", loadingBuilder:
-      //       (BuildContext context, Widget child,
-      //           ImageChunkEvent? loadingProgress) {
-      //     if (loadingProgress == null) return child;
-      //     return Center(
-      //       child: CircularProgressIndicator(
-      //         value: loadingProgress.expectedTotalBytes != null
-      //             ? loadingProgress.cumulativeBytesLoaded /
-      //                 loadingProgress.expectedTotalBytes!
-      //             : null,
-      //       ),
-      //     );
-      //   }),
-      //   Image.network("https://picsum.photos/200/307", loadingBuilder:
-      //       (BuildContext context, Widget child,
-      //           ImageChunkEvent? loadingProgress) {
-      //     if (loadingProgress == null) return child;
-      //     return Center(
-      //       child: CircularProgressIndicator(
-      //         value: loadingProgress.expectedTotalBytes != null
-      //             ? loadingProgress.cumulativeBytesLoaded /
-      //                 loadingProgress.expectedTotalBytes!
-      //             : null,
-      //       ),
-      //     );
-      //   }),
-      //   Container(constraints: BoxConstraints.expand(), color: Theme.of(context).colorScheme.primary,)
-      // ],
       options: CarouselOptions(
         aspectRatio: 3/4,
         viewportFraction: 0.8,

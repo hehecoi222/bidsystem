@@ -1,4 +1,6 @@
+import 'package:bidsystem/constants/controllers.dart';
 import 'package:bidsystem/helpers/responsiveness.dart';
+import 'package:bidsystem/routing/routes.dart';
 import 'package:bidsystem/widgets/cutom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -7,10 +9,15 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
     leading: !ResponsiveWidget.isSmallScreen(context)
         ? Row(
             children: [
-              Container(
-                padding: EdgeInsets.only(left: 16),
-                child: Image.network("https://picsum.photos/200/301",
-                    height: 32, width: 32, fit: BoxFit.cover),
+              InkWell(
+                onTap: () {
+                  navigationController.navigateTo(HomePageRoute);
+                },
+                child: Container(
+                  padding: EdgeInsets.only(left: 16),
+                  child: Image.network("https://picsum.photos/200/301",
+                      height: 32, width: 32, fit: BoxFit.cover),
+                ),
               ),
             ],
           )
@@ -23,17 +30,20 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
     title: Row(
       children: [
         // Action button and etc
-        Visibility(
-            child: CustomText(
-          text: "Bid System",
-          color: Theme.of(context).colorScheme.primary,
-          size: 20,
-          fontWeight: FontWeight.bold,
-        )),
+        InkWell(
+          onTap: () {navigationController.navigateTo(HomePageRoute); },
+          child: Visibility(
+              child: CustomText(
+            text: "Bid System",
+            color: Theme.of(context).colorScheme.primary,
+            size: 20,
+            fontWeight: FontWeight.bold,
+          )),
+        ),
         Expanded(child: Container()),
         IconButton(
           onPressed: () {},
-          icon: Icon(Icons.settings),
+          icon: Icon(Icons.shopping_bag_outlined),
           color: Theme.of(context).colorScheme.onSurfaceVariant,
         ),
         Stack(
@@ -77,6 +87,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                 child: CustomText(
                   text: "Sign in",
                   color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
                 )),
             SizedBox(
               width: 12,
@@ -85,7 +96,8 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                 onPressed: () {},
                 child: CustomText(
                     text: "Sign up",
-                    color: Theme.of(context).colorScheme.onPrimary))
+                    color: Theme.of(context).colorScheme.onPrimary,
+                fontWeight: FontWeight.bold,))
           ],
         )
       ],

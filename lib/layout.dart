@@ -1,5 +1,6 @@
 import 'package:bidsystem/helpers/responsiveness.dart';
 import 'package:bidsystem/widgets/large_screen.dart';
+import 'package:bidsystem/widgets/small_screen.dart';
 import 'package:bidsystem/widgets/top_nav.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class SiteLayut extends StatelessWidget {
       key: scaffoldKey,
       appBar: topNavigationBar(context, scaffoldKey),
       drawer: const Drawer(), // TODO: consider to implement a drawer or not
-      body: const ResponsiveWidget(largeScreen: LargeScreen(),
+      body: const ResponsiveWidget(largeScreen: LargeScreen(), smallScreen: SmallScreen(),
       ),
     );
   }

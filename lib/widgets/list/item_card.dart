@@ -6,6 +6,7 @@ class ShoppingItemCard extends StatelessWidget {
   final String description;
   final double price;
   final VoidCallback onPressed;
+  final VoidCallback onAddToCart;
 
   const ShoppingItemCard({
     Key? key,
@@ -13,7 +14,7 @@ class ShoppingItemCard extends StatelessWidget {
     required this.title,
     required this.description,
     required this.price,
-    required this.onPressed,
+    required this.onPressed, required this.onAddToCart,
   }) : super(key: key);
 
   @override
@@ -52,7 +53,7 @@ class ShoppingItemCard extends StatelessWidget {
                             fontSize: 20.0, fontWeight: FontWeight.bold),
                       ),
                       ElevatedButton(
-                        onPressed: onPressed,
+                        onPressed: onAddToCart,
                         child: Text('Add to Cart'),
                         style: ElevatedButton.styleFrom(
                             foregroundColor: Theme
