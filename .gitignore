@@ -1,5 +1,5 @@
 # Build folder exception
-!/build/web/*
+!/build/web
 
 # Miscellaneous
 *.class
