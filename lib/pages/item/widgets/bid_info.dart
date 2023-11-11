@@ -1,5 +1,6 @@
 import 'package:bidsystem/widgets/cutom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 const EXAMPLE_LIST = [
   Info(name: "Hyyy", money: "787", time: "UTCG"),
@@ -57,10 +58,116 @@ class DialogInfo extends StatelessWidget {
           flex: 1,
         ),
         Expanded(
-          child: Container(
-            color: Theme.of(context).colorScheme.primary,
-          ),
           flex: 1,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    textStyle: Theme.of(context).textTheme.labelMedium,
+                    text: "Current price:",
+                  ),
+                  CustomText(
+                    textStyle: Theme.of(context).textTheme.displayMedium,
+                    text: "\$Current Price",
+                  )
+                ],
+              ),
+              Divider(
+                height: 0,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      CustomText(
+                        text: "Special Item",
+                        size: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                      CustomText(
+                        text: "Sell by: \$seller",
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  FilledButton.tonal(
+                      onPressed: () {},
+                      child: CustomText(
+                        textStyle: Theme.of(context).textTheme.labelMedium,
+                        text: "x1.5",
+                      )),
+                  FilledButton.tonal(
+                      onPressed: () {},
+                      child: CustomText(
+                        textStyle: Theme.of(context).textTheme.labelMedium,
+                        text: "x2",
+                      )),
+                  FilledButton.tonal(
+                      onPressed: () {},
+                      child: CustomText(
+                        textStyle: Theme.of(context).textTheme.labelMedium,
+                        text: "x3",
+                      )),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    textStyle: Theme.of(context).textTheme.labelMedium,
+                    text: "Your price:",
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Your price",
+                      suffixText: "đ",
+                    ),
+                    keyboardType: TextInputType.numberWithOptions(
+                        signed: true, decimal: true),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      TextInputFormatter.withFunction((oldValue, newValue) {
+                        String newText = newValue.text
+                            .replaceAll(".", '')
+                            .replaceAll(',', '')
+                            .replaceAll('_', '')
+                            .replaceAll('-', '');
+                        String value = newText;
+                        int cursorPosition = newText.length;
+                        if (newText.isNotEmpty) {
+                          if (value.isNotEmpty) {
+                            String display = "";
+                            for (int i = value.length - 1; i >= 0; i--) {
+                              display = display + value[i];
+                              if ((value.length - i) % 3 == 0 && i != 0) {
+                                display += " ";
+                              }
+                            }
+                            value = display.split('').reversed.join();
+                            cursorPosition = value.length;
+                          }
+                        }
+                        return TextEditingValue(
+                            text: value,
+                            selection: TextSelection.collapsed(
+                                offset: cursorPosition));
+                      })
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
         )
       ],
     );
