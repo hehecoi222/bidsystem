@@ -1,8 +1,28 @@
+import 'package:bidsystem/constants/controllers.dart';
+import 'package:bidsystem/helpers/cur_formater.dart';
 import 'package:bidsystem/widgets/cutom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 const EXAMPLE_LIST = [
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
+  Info(name: "Hyyy", money: "787", time: "UTCG"),
   Info(name: "Hyyy", money: "787", time: "UTCG"),
   Info(name: "What", money: "Monet", time: "This the time")
 ];
@@ -59,115 +79,121 @@ class DialogInfo extends StatelessWidget {
         ),
         Expanded(
           flex: 1,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomText(
-                    textStyle: Theme.of(context).textTheme.labelMedium,
-                    text: "Current price:",
-                  ),
-                  CustomText(
-                    textStyle: Theme.of(context).textTheme.displayMedium,
-                    text: "\$Current Price",
-                  )
-                ],
-              ),
-              Divider(
-                height: 0,
-              ),
-              Column(
+          child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomText(
-                        text: "Special Item",
-                        size: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onSurface,
+                        textStyle: Theme.of(context).textTheme.labelMedium,
+                        text: "Current price:",
                       ),
-                      CustomText(
-                        text: "Sell by: \$seller",
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                      Obx(() => CustomText(
+                            textStyle:
+                                Theme.of(context).textTheme.displayMedium,
+                            text:
+                                "${currencyFormat(auctionController.currentAuction.currentPrice.value.toString()) + " đ"}",
+                          ))
                     ],
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  FilledButton.tonal(
-                      onPressed: () {},
-                      child: CustomText(
-                        textStyle: Theme.of(context).textTheme.labelMedium,
-                        text: "x1.5",
-                      )),
-                  FilledButton.tonal(
-                      onPressed: () {},
-                      child: CustomText(
-                        textStyle: Theme.of(context).textTheme.labelMedium,
-                        text: "x2",
-                      )),
-                  FilledButton.tonal(
-                      onPressed: () {},
-                      child: CustomText(
-                        textStyle: Theme.of(context).textTheme.labelMedium,
-                        text: "x3",
-                      )),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomText(
-                    textStyle: Theme.of(context).textTheme.labelMedium,
-                    text: "Your price:",
                   ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Your price",
-                      suffixText: "đ",
-                    ),
-                    keyboardType: TextInputType.numberWithOptions(
-                        signed: true, decimal: true),
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                      TextInputFormatter.withFunction((oldValue, newValue) {
-                        String newText = newValue.text
-                            .replaceAll(".", '')
-                            .replaceAll(',', '')
-                            .replaceAll('_', '')
-                            .replaceAll('-', '');
-                        String value = newText;
-                        int cursorPosition = newText.length;
-                        if (newText.isNotEmpty) {
-                          if (value.isNotEmpty) {
-                            String display = "";
-                            for (int i = value.length - 1; i >= 0; i--) {
-                              display = display + value[i];
-                              if ((value.length - i) % 3 == 0 && i != 0) {
-                                display += " ";
+                  SizedBox(height: 10,),
+                  Divider(
+                    height: 0,
+                  ),
+                  SizedBox(height: 20,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Obx(() => CustomText(
+                            text: auctionController.currentAuction.item.value.name.value,
+                            size: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),),
+                          Obx(() => CustomText(
+                            text: "Sell by: ${userController.viewInfoState.username.value}",
+                            color:
+                                Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),)
+                        ],
+                      )
+                    ],
+                  ),SizedBox(height: 15,),
+                  Wrap(
+                    spacing: 5,
+                    children: [
+                      FilledButton.tonal(
+                          onPressed: () {
+                            auctionController.multiply(1.5);
+                          },
+                          child: CustomText(
+                            textStyle: Theme.of(context).textTheme.labelMedium,
+                            text: "x1.5",
+                          )),
+                      FilledButton.tonal(
+                          onPressed: () {
+                            auctionController.multiply(2);
+                          },
+                          child: CustomText(
+                            textStyle: Theme.of(context).textTheme.labelMedium,
+                            text: "x2",
+                          )),
+                      FilledButton.tonal(
+                          onPressed: () {
+                            auctionController.multiply(3);
+                          },
+                          child: CustomText(
+                            textStyle: Theme.of(context).textTheme.labelMedium,
+                            text: "x3",
+                          )),
+                    ],
+                  ),
+                  SizedBox(height: 15,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Your price",
+                          suffixText: "đ",
+                        ),
+                        controller: auctionController.nextPrice,
+                        keyboardType:
+                            TextInputType.numberWithOptions(signed: true),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                          TextInputFormatter.withFunction((oldValue, newValue) {
+                            String newText = newValue.text
+                                .replaceAll(".", '')
+                                .replaceAll(',', '')
+                                .replaceAll('_', '')
+                                .replaceAll('-', '');
+                            String value = newText;
+                            int cursorPosition = newText.length;
+                            if (newText.isNotEmpty) {
+                              if (value.isNotEmpty) {
+                                value = currencyFormat(value);
+                                cursorPosition = value.length;
                               }
                             }
-                            value = display.split('').reversed.join();
-                            cursorPosition = value.length;
-                          }
-                        }
-                        return TextEditingValue(
-                            text: value,
-                            selection: TextSelection.collapsed(
-                                offset: cursorPosition));
-                      })
+                            return TextEditingValue(
+                                text: value,
+                                selection: TextSelection.collapsed(
+                                    offset: cursorPosition));
+                          })
+                        ],
+                      )
                     ],
                   )
                 ],
-              )
-            ],
-          ),
+              )),
         )
       ],
     );

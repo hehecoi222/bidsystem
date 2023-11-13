@@ -1,0 +1,1 @@
+const BackendHost = 'http://localhost:8080';

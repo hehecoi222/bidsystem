@@ -1,5 +1,7 @@
+import 'package:bidsystem/constants/controllers.dart';
 import 'package:bidsystem/pages/home/widgets/button.dart';
 import 'package:bidsystem/pages/home/widgets/text_sub_button.dart';
+import 'package:bidsystem/routing/routes.dart';
 import 'package:bidsystem/widgets/cutom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -18,14 +20,19 @@ class HomeBoard extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                    //     image: DecorationImage(
-                    //   image: AssetImage('images/test.png'),
-                    //   fit: BoxFit.cover,
-                    //   colorFilter: ColorFilter.mode(
-                    //       Colors.black.withOpacity(0.5), BlendMode.dstATop),
-                    // ),
-                    color: Theme.of(context).colorScheme.tertiaryContainer,
-                borderRadius: BorderRadius.circular(10.0)),
+                    image: DecorationImage(
+                      image: Image.network(
+                        "https://picsum.photos/200/301",
+                        width: double.infinity,
+                        height: double.infinity,
+                        fit: BoxFit.cover,
+                      ).image,
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(0.25), BlendMode.dstATop),
+                    ),
+                    // color: Theme.of(context).colorScheme.tertiaryContainer,
+                    borderRadius: BorderRadius.circular(10.0)),
                 child: Padding(
                   padding: EdgeInsets.all(5),
                   child: Column(
@@ -41,7 +48,7 @@ class HomeBoard extends StatelessWidget {
                         height: 5,
                       ),
                       CustomText(
-                        text: "This is a subtext",
+                        text: "The project",
                         color: Theme.of(context).colorScheme.onInverseSurface,
                         size: 24,
                       ),
@@ -50,14 +57,37 @@ class HomeBoard extends StatelessWidget {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CTAButton(),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          TextSubButton(),
-                        ],
-                      )
+                        children: userController.myState.id.value < 0
+                            ? [
+                                CTAButton(
+                                  onPressed: () {
+                                    navigationController
+                                        .navigateTo(SignUpPageRoute);
+                                  },
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                TextSubButton(
+                                  onPressed: () {
+                                    navigationController
+                                        .navigateTo(SignInPageRoute);
+                                  },
+                                ),
+                              ]
+                            : [
+                                CTAButton(
+                                  text: "Start browsing",
+                                  icon: Icon(
+                                    Icons.arrow_forward,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimaryContainer,
+                                  ),
+                                  onPressed: () {},
+                                )
+                              ],
+                      ),
                     ],
                   ),
                 ),

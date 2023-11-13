@@ -1,12 +1,15 @@
+import 'package:bidsystem/constants/controllers.dart';
+import 'package:bidsystem/controllers/auction_controller.dart';
 import 'package:bidsystem/pages/item/routing/routes.dart';
 import 'package:bidsystem/pages/item/widgets/add_to_cart_success.dart';
 import 'package:bidsystem/pages/item/widgets/bid_info.dart';
 import 'package:bidsystem/pages/item/widgets/receipt.dart';
+import 'package:bidsystem/routing/routes.dart';
 import 'package:bidsystem/widgets/cutom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CustomDialog extends StatelessWidget {
+class CustomDialog extends GetView<AuctionController> {
   CustomDialog({super.key});
 
   final _navigationKey = GlobalKey<NavigatorState>();
@@ -23,6 +26,7 @@ class CustomDialog extends StatelessWidget {
   }
 
   void _onConfirm() {
+    auctionController.registerBid();
     _nextActionText.value = "Done";
     _currentPage.value = PlaceBidProgressCard;
     _navigationKey.currentState!.pushNamed(PlaceBidProgressCard);
@@ -77,7 +81,7 @@ class CustomDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    return AlertDialog(
+    return userController.myState.id.value >= 0 ? AlertDialog(
       title: CustomText(
         text: "Place bid",
         textStyle: Theme.of(context).textTheme.headlineSmall,
@@ -107,6 +111,35 @@ class CustomDialog extends StatelessWidget {
           child: Obx(() => Text(_nextActionText.value)),
         ),
       ],
-    );
+    ) : AlertDialog(title: CustomText(
+      text: "Place bid",
+      textStyle: Theme.of(context).textTheme.headlineSmall,
+    ), content: Container(
+      child: Center(child: CustomText(
+        text: "You need an account for this",
+        textStyle: Theme.of(context).textTheme.bodyLarge,
+      )), width: 400, height: 100,
+    ),actions: [
+      TextButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: Text("Cancel"),
+      ),
+      TextButton(
+        onPressed: () {
+          Navigator.pop(context);
+          navigationController.navigateTo(SignInPageRoute);
+        },
+        child: Text("Sign in"),
+      ),
+      TextButton(
+        onPressed: () {
+          Navigator.pop(context);
+          navigationController.navigateTo(SignInPageRoute);
+        },
+        child: Text("Sign up"),
+      ),
+    ],);
   }
 }

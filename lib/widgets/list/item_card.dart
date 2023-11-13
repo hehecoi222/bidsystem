@@ -1,3 +1,4 @@
+import 'package:bidsystem/helpers/cur_formater.dart';
 import 'package:flutter/material.dart';
 
 class ShoppingItemCard extends StatelessWidget {
@@ -48,13 +49,13 @@ class ShoppingItemCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$${price.toStringAsFixed(2)}',
+                        '${currencyFormat(price.toInt().toString())} đ',
                         style: TextStyle(
                             fontSize: 20.0, fontWeight: FontWeight.bold),
                       ),
                       ElevatedButton(
                         onPressed: onAddToCart,
-                        child: Text('Add to Cart'),
+                        child: Text('Place bid'),
                         style: ElevatedButton.styleFrom(
                             foregroundColor: Theme
                                 .of(context)
