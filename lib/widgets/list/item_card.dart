@@ -31,7 +31,7 @@ class ShoppingItemCard extends StatelessWidget {
             Expanded(child:
             ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
-              child: Image.asset("images/" + imageURL + ".jpg",
+              child: Image.asset("assets/images/" + imageURL + ".jpg",
                   height: double.infinity, width: double.infinity, fit: BoxFit.cover),
             ),),
             Padding(

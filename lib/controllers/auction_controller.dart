@@ -32,6 +32,8 @@ class AuctionController extends GetxController with StateMixin {
   final itemPrice = TextEditingController();
   final itemMinimum = TextEditingController();
 
+  final searchTerm = TextEditingController();
+
   void loadRemainingTime() {
     Timer.periodic(Duration(seconds: 1), (Timer timer) {
       if (currentAuction.id.value < 0) {

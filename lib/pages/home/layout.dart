@@ -25,9 +25,11 @@ class HomePage extends StatelessWidget {
               textStyle: Theme.of(context).textTheme.displayMedium,
               fontWeight: FontWeight.bold,
             )),
-        GridListAuction(
-          isHidden: true,
-        ),
+        Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: GridListAuction(
+              isHidden: true,
+            )),
         SizedBox(
           height: 20,
         ),
@@ -49,9 +51,11 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 navigationController.navigateTo(BrowsePageRoute);
               },
-            )
+            ),
+            SizedBox(width: 20,)
           ],
-        )
+        ),
+        SizedBox(height: 50,)
       ],
     );
   }

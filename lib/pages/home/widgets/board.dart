@@ -22,7 +22,7 @@ class HomeBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                       image: Image.asset(
-                        "images/backmain.jpg",
+                        "assets/images/backmain.jpg",
                         width: double.infinity,
                         height: double.infinity,
                         fit: BoxFit.cover,

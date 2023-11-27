@@ -4,6 +4,7 @@ import 'package:bidsystem/helpers/responsiveness.dart';
 import 'package:bidsystem/routing/routes.dart';
 import 'package:bidsystem/widgets/cutom_text.dart';
 import 'package:bidsystem/widgets/expander.dart';
+import 'package:bidsystem/widgets/search_bar/search_bar.dart';
 import 'package:bidsystem/widgets/user_short_row.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                   child: Container(
                       padding: EdgeInsets.only(left: 16),
                       child: Image.asset(
-                        "images/icon.png",
+                        "assets/images/icon.png",
                         height: 32,
                         width: 32,
                         fit: BoxFit.cover,
@@ -52,6 +53,9 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
               )),
             ),
             Expanded(child: Container()),
+            SimpleSearchBar(hintText: "Search", controller: auctionController.searchTerm, onPressed: () {
+
+            }),
             IconButton(
               onPressed: () {},
               icon: Icon(Icons.shopping_bag_outlined),

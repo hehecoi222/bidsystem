@@ -14,7 +14,7 @@ class ItemController extends GetxController with StateMixin {
   static ItemController instance = Get.find();
 
   final currentItem = ItemState();
-  final listAllItems = <ItemState>[].obs;
+  final listAllItems = List<ItemState>.empty().obs;
 
   final failed = false.obs;
   final errorMessage = "".obs;

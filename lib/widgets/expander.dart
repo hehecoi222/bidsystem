@@ -79,7 +79,7 @@ class NotificationItem extends StatelessWidget {
               decoration: BoxDecoration(
                   image: DecorationImage(
                     image: Image.asset(
-                      "images/${this.imageAsset}",
+                      "assets/images/${this.imageAsset}",
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.cover,
