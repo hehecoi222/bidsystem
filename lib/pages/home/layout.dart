@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
     return ListView(
       children: [
         HomeBoard(),
-        GridListAuction(),
+        GridListAuction(isHidden: true,),
       ],
     );
   }

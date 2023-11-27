@@ -10,7 +10,18 @@ class SignLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).colorScheme.tertiaryContainer,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+            image: Image.asset(
+              "images/backmain.jpg",
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.cover,
+            ).image,
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.25), BlendMode.dstATop),
+          ),),
       child: Center(
           child: Container(
         width: 500,

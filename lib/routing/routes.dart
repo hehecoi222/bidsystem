@@ -8,6 +8,7 @@ const SignUpPageRoute = "/signup";
 const UserPagePrefix = "/user/";
 const UserPageDefaultRoute = "/user/$UserDefault";
 const UserDefault = "default";
+const BrowsePageRoute = "/browse";
 
 List pagRoute = [
   HomePageRoute,
@@ -15,4 +16,5 @@ List pagRoute = [
   UserPageDefaultRoute,
   SignInPageRoute,
   SignUpPageRoute,
+  BrowsePageRoute
 ];

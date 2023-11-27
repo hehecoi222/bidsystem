@@ -19,9 +19,9 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                   },
                   child: Container(
                       padding: EdgeInsets.only(left: 16),
-                      child: Image.network("https://picsum.photos/200/301",
+                      child: Image.asset("images/icon.png",
                           height: 32, width: 32, fit: BoxFit.cover,
-                          loadingBuilder: imageLoading, errorBuilder: imageObject,)),
+                          errorBuilder: imageObject,)),
                 ),
               ],
             )

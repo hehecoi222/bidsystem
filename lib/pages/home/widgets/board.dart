@@ -21,8 +21,8 @@ class HomeBoard extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: Image.network(
-                        "https://picsum.photos/200/301",
+                      image: Image.asset(
+                        "images/backmain.jpg",
                         width: double.infinity,
                         height: double.infinity,
                         fit: BoxFit.cover,

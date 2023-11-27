@@ -1,5 +1,6 @@
 import 'package:bidsystem/pages/home/layout.dart';
 import 'package:bidsystem/pages/item/layout.dart';
+import 'package:bidsystem/pages/listall/layout.dart';
 import 'package:bidsystem/pages/sign/layout.dart';
 import 'package:bidsystem/pages/user/layout.dart';
 import 'package:bidsystem/routing/routes.dart';
@@ -25,6 +26,8 @@ Route<Object?> generateRoute(RouteSettings settings) {
             signIn: false,
           ),
           settings);
+      case BrowsePageRoute:
+        return _getPageRoute(ListAll(), settings);
     default:
       if (settings.name!.startsWith(ItemPagePrefix)) {
         final subRoute = settings.name?.substring(ItemPagePrefix.length);

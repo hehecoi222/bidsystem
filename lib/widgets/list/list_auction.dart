@@ -8,7 +8,9 @@ import 'package:get/get.dart';
 import 'item_card.dart';
 
 class GridListAuction extends GetView<AuctionController> {
-  const GridListAuction({super.key});
+  const GridListAuction({super.key, this.isHidden = false});
+
+  final bool isHidden;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class GridListAuction extends GetView<AuctionController> {
               children: auctionController.listAuctionsPreview
                   .map(
                     (element) => ShoppingItemCard(
-                        imageURL: 'https://picsum.photos/200/30' + element.id.value.toString(),
+                        imageURL: 'item' + element.id.value.toString(),
                         title: element.item.value.name.value,
                         description: element.item.value.description.value,
                         price: element.currentPrice.value.toDouble(),
@@ -33,7 +35,7 @@ class GridListAuction extends GetView<AuctionController> {
                         },
                         onPressed: () {onPressed(element.id.value);}),
                   )
-                  .toList(),
+                  .toList().sublist(0, isHidden ? 9 : null),
             ),
         onLoading: Container(
             height: 500,
