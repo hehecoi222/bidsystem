@@ -10,9 +10,9 @@ class ListAll extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(children: [
       Padding(
-          padding: EdgeInsets.only(left: 16),
+          padding: EdgeInsets.only(left: 16, top: 20),
           child: CustomText(
-            text: "My Auction",
+            text: "Let's browsing",
             textStyle: Theme.of(context).textTheme.displayMedium,
             fontWeight: FontWeight.bold,
           )),

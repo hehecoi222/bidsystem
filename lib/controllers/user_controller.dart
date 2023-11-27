@@ -19,6 +19,8 @@ class UserController extends GetxController with StateMixin {
   final failed = false.obs;
   final errorMessage = "".obs;
 
+  final hasMessage = false.obs;
+
   final emailController = TextEditingController();
   final usernameController = TextEditingController();
   final phoneController = TextEditingController();

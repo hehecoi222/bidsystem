@@ -84,7 +84,9 @@ class HomeBoard extends StatelessWidget {
                                         .colorScheme
                                         .onPrimaryContainer,
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    navigationController.navigateTo(BrowsePageRoute);
+                                  },
                                 )
                               ],
                       ),

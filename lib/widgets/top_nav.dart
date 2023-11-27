@@ -19,9 +19,13 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                   },
                   child: Container(
                       padding: EdgeInsets.only(left: 16),
-                      child: Image.asset("images/icon.png",
-                          height: 32, width: 32, fit: BoxFit.cover,
-                          errorBuilder: imageObject,)),
+                      child: Image.asset(
+                        "images/icon.png",
+                        height: 32,
+                        width: 32,
+                        fit: BoxFit.cover,
+                        errorBuilder: imageObject,
+                      )),
                 ),
               ],
             )
@@ -53,28 +57,53 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
               icon: Icon(Icons.shopping_bag_outlined),
               color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
-            Stack(
-              children: [
-                IconButton(
+            ExpandMenu(
+              contents: [
+                NotificationItem(
+                  title: "Test",
+                  description:
+                      "This is a test of a loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text, more like a loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo togetoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo togetoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+                  imageAsset: "item1.jpg",
                   onPressed: () {},
-                  icon: Icon(Icons.notifications),
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
-                ),
-                Positioned(
-                  child: Container(
-                    width: 6,
-                    height: 6,
-                    padding: EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Theme.of(context).colorScheme.error),
-                        borderRadius: BorderRadius.circular(50),
-                        color: Theme.of(context).colorScheme.error),
+                  subIcon: Icon(
+                    Icons.delete,
+                    color: Theme.of(context).colorScheme.onTertiaryContainer,
                   ),
-                  top: 7,
-                  right: 7,
+                  onSubPressed: () {},
                 )
               ],
+              builder: (builder, controller, child) {
+                return Stack(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        if (controller.isOpen) {
+                          controller.close();
+                        } else {
+                          controller.open();
+                        }
+                      },
+                      icon: Icon(Icons.notifications),
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                    if (userController.hasMessage.value)
+                      Positioned(
+                        child: Container(
+                          width: 6,
+                          height: 6,
+                          padding: EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Theme.of(context).colorScheme.error),
+                              borderRadius: BorderRadius.circular(50),
+                              color: Theme.of(context).colorScheme.error),
+                        ),
+                        top: 7,
+                        right: 7,
+                      )
+                  ],
+                );
+              },
             ),
             SizedBox(
               width: 24,
@@ -117,12 +146,14 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                     contents: [
                         SimpleMenuItem(
                             value: "My home",
+                            icon: Icon(Icons.home),
                             onPressed: () {
                               navigationController
                                   .navigateTo(UserPageDefaultRoute);
                             }),
                         SimpleMenuItem(
                             value: "Sign out",
+                            icon: Icon(Icons.exit_to_app),
                             onPressed: () {
                               userController.logOut();
                             }),
